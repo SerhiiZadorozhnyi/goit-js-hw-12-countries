@@ -13,7 +13,6 @@ const refs = getRefs();
 let searchQuery = '';
 
 refs.search.addEventListener('input', debounce(onSearchCountry, 500));
-
 function renderSearchCountries(countries) {
     if (countries.length > 10) {
         return error({ text: "Too many matches found. Please enter a more specific query!" });
@@ -42,7 +41,5 @@ function onSearchCountry() {
     searchQuery = refs.search.value; 
     fetchCountries(searchQuery)
         .then(renderSearchCountries)
-        .catch(error => console.log(error))
+        .catch(error => console.log(error.trim()))
 }
-
-    
